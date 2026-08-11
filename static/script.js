@@ -13,6 +13,7 @@ tombol.addEventListener("click", async function(){
         
     })
     let data = await response.json()
+    list.innerHTML = ""
     data.forEach(film => {
         const img = document.createElement("img")
         const judul = document.createElement("p")
