@@ -1,0 +1,14 @@
+.list {
+    display: flex;
+    gap: 20px;
+}
+
+.movie {
+    display: flex;
+    gap: 20px;
+    margin: 20px;
+}
+.tentang_film {
+    background-color: black;
+    color: white;
+}
