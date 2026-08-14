@@ -16,11 +16,14 @@ tombol.addEventListener("click", async function(){
     let data = await response.json()
     list.innerHTML = ""
     data.forEach(film => {
+        const tombol2 = document.createElement("button")
+        tombol2.textContent = "see more"
+        tombol2.setAttribute("data-id",film.id)
         const movie = document.createElement("div");
         movie.classList.add("movie");
 
         const tentang_film = document.createElement("div");
-        tentang_film.classList.add("tentang_film");
+        tentang_film.classList.add("tentang_film", "nonactive");
 
         const img = document.createElement("img");
         const judul = document.createElement("p");
@@ -32,10 +35,11 @@ tombol.addEventListener("click", async function(){
         judul.textContent = film.judul;
         rating.textContent = film.rating + "/10";
         overview.textContent = film.overview;
-        rilis.textContent = "release on " + film.rilis;
+        rilis.textContent = "released on " + film.rilis;
 
         movie.appendChild(img);
         movie.appendChild(tentang_film);
+        movie.appendChild(tombol2)
 
         tentang_film.appendChild(judul);
         tentang_film.appendChild(rating);
@@ -43,6 +47,24 @@ tombol.addEventListener("click", async function(){
         tentang_film.appendChild(rilis);
 
         list.appendChild(movie);
+        tombol2.addEventListener("click", async function() {
+            tombol2.remove()
+            const tutup = document.createElement("button")
+            movie.appendChild(tutup)
+            tutup.setAttribute("data-id",film.id)
+            tutup.textContent = "close"
+            tutup.addEventListener("click", async function () {
+                if (tentang_film.classList.contains("tentang_film")) {
+                    tentang_film.classList.add("nonactive")
+                    movie.appendChild(tombol2)
+                    tutup.remove()
+                }
+                else {
+                    alert("you must open the movie info first")
+                }
+            })
+            tentang_film.classList.remove("nonactive")
+        })
         
     });
 })

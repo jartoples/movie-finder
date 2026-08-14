@@ -21,14 +21,16 @@ def film():
 
     response = requests.get(url, params=params)
     data = response.json()
+    print(data["results"])
     hasil = []
-    for film_data in data["results"]:
+    for id, film_data in enumerate(data["results"]):
         hasil.append({
         "poster": f"https://image.tmdb.org/t/p/w154{film_data['poster_path']}",
         "judul": film_data["title"],
         "rating": film_data["vote_average"],
         "overview": film_data["overview"],
-        "rilis": film_data["release_date"]
+        "rilis": film_data["release_date"],
+        "id":film_data["id"]
     })
 
     return jsonify(hasil)
