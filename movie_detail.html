@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{{ url_for('static', filename='movie_detail.css') }}">
+    </head>
+    <body>
+        <img src="https://image.tmdb.org/t/p/w300{{ data['poster_path'] }}" id = "poster">
+        <div id = "penjelasan">
+            <h1 id = "judul">{{data["title"]}}</h1>
+            <p id = "rating">{{data["vote_average"]}}/10</p>
+            <p id = "overview">{{data["overview"]}}</p>
+            <p id = "rilis">released on {{data["release_date"]}}</p>
+            <p id = "genre">genre: {% for genre in data["genres"] %} <span class = "genres">{{genre["name"]}}</span> {% endfor %}</p>
+        </div>
+    </body>
+</html>

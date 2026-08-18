@@ -7,7 +7,19 @@ app = Flask(__name__,template_folder=".")
 
 @app.route("/")
 def home():
-    return render_template("dashboard.html")
+    return render_template("landing_page.html")
+
+@app.route("/movie/<movie_id>")
+def info_film(movie_id):
+    url = f"https://api.themoviedb.org/3/movie/{movie_id}"
+    params = {
+        "api_key":api_key,
+        "language": "en-US"
+    }
+    response = requests.get(url,params=params)
+    data = response.json()
+    print(data)
+    return render_template("movie_detail.html",data = data)
 @app.route("/film",methods = ["POST"])
 def film():
     response_web = request.json
@@ -23,7 +35,7 @@ def film():
     data = response.json()
     print(data["results"])
     hasil = []
-    for id, film_data in enumerate(data["results"]):
+    for film_data in data["results"]:
         hasil.append({
         "poster": f"https://image.tmdb.org/t/p/w154{film_data['poster_path']}",
         "judul": film_data["title"],
@@ -32,7 +44,6 @@ def film():
         "rilis": film_data["release_date"],
         "id":film_data["id"]
     })
-
     return jsonify(hasil)
     
 app.run(debug =True)

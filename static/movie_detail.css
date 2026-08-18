@@ -1,0 +1,21 @@
+body {
+    display:flex;
+    margin:0px;
+    background-color: #0F1117;
+}
+#penjelasan {
+    background-color: #0F1117;
+    border:#343A4A;
+    color: #A7AFBF;
+}
+#judul {
+    color:#F5F7FA;
+}
+#poster {
+    border-radius: 10px;
+}
+#genre span {
+    margin-left: 10px;
+    margin-right: 10px;
+    
+}

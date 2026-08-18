@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+    <body>
+        <div class = "layar_utama">
+            <nav>
+                <h1>MOVIE FINDER</h1>
+                <div class = "info_link">
+                    <a>Home</a>
+                    <a>Movies</a>
+                    <a>About</a>
+                </div>
+            </nav>
+            <div id = "box">
+                <div id = "teks_landing">
+                    <h2>FIND YOUR NEXT FAVORITE MOVIE</h2>
+                    <p1>Search thousands of movies and discover something worth watching.</p1>
+                </div>
+                <div id = "pengirim_data">
+                    <input class = "pengirim_data" id = "input" required placeholder="Search movies...">
+                    <button class = "pengirim_data" id = "tombol_send">Search</button>
+                    <div id = "list">
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="{{ url_for('static', filename='script.js') }}"></script>
+    </body>
+</html>
